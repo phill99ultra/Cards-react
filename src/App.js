@@ -8,7 +8,8 @@ class App extends Component {
 		super();
 		this.state = {
 			characters : [],
-			searchField: ''
+			searchField: '',
+			meaningOfLife: 47
 		}
 	}
 	componentDidMount() {
@@ -16,6 +17,12 @@ class App extends Component {
 			.then(response => response.json())
 			.then(users => this.setState({characters: users}))
 	}
+
+	// handleClick = () => {
+	// 	this.setState(prevState, prevProps, () => console.log(this.state.meaningOfLife));
+		
+	// }
+
 	render() {
 		const { characters, searchField } = this.state,
 			filteredCharacters = characters
@@ -23,6 +30,8 @@ class App extends Component {
 		return (
 			<div className="App">
 				<h1>Strange Characters</h1>
+				{/* <p>{this.state.meaningOfLife}</p>
+				<button onClick={this.handleClick}>Update state</button> */}
 				<SearchBox
 					placeholder='search characters'
 					handleChange={e => this.setState({searchField : e.target.value})}
